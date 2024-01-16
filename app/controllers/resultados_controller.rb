@@ -46,6 +46,6 @@ class ResultadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resultado_params
-      params.require(:resultado).permit(:periodo, :valor_meta, :valor_realizado)
+      params.require(:resultado).permit(:periodo, :cliente_id,  :valor_meta, :valor_realizado)
     end
 end
