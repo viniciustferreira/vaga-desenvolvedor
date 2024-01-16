@@ -2,14 +2,14 @@ require 'rails_helper'
 require 'calculos'
 
 RSpec.describe Calculos, type: :lib do
-  describe "Calcula performance" do
-    it "com atributos validos" do
+  describe "Calculate performance" do
+    it "with valid attributes" do
       valor_performance = Calculos.performance(100.5, 150.5)
 
-      expect(valor_performance).to eq(1.1682242990654206)
+      expect(valor_performance).to eq(1.4975124378109452)
     end
 
-    it "com valor realizado valido e meta zero" do
+    it "with valor meta equal zero" do
       valor_performance = Calculos.performance(0.0, 150.5)
 
       expect(valor_performance).to eq(0)
