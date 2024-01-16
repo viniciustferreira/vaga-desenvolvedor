@@ -16,13 +16,13 @@ RSpec.describe CalculosController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #performance" do
-    it "com atributos validos" do
+    it "with valid attributes" do
       resultado = Resultado.create! valid_attributes
       get :performance, params: {valor_meta: resultado.valor_meta, valor_realizado: resultado.valor_realizado}, session: valid_session
       expect(response).to be_successful
     end
 
-    it "com atributos inválidos" do
+    it "with invalid atributes" do
       resultado = Resultado.create! valid_attributes
       get :performance, params: {valor_meta: resultado.valor_meta, valor_realizado: resultado.valor_realizado}, session: valid_session
       expect(response).to be_successful
