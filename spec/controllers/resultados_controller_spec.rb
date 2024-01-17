@@ -13,6 +13,7 @@ RSpec.describe ResultadosController, type: :controller do
 
   let(:valid_session) { {} }
 
+
   describe "GET #index" do
     it "returns a success response" do
       resultado = Resultado.create! valid_attributes
@@ -37,6 +38,17 @@ RSpec.describe ResultadosController, type: :controller do
         }.to change(Resultado, :count).by(1)
       end
     end
+
+    context "when save fails" do
+      it "fails to create a new Resultado" do
+        allow_any_instance_of(Resultado).to receive(:save).and_return(false)
+
+        expect {
+          post :create, params: {resultado: valid_attributes}, session: valid_session
+        }.to change(Resultado, :count).by(0)
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe "PUT #update" do
@@ -59,6 +71,22 @@ RSpec.describe ResultadosController, type: :controller do
         put :update, params: {id: resultado.to_param, resultado: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
+      end
+    end
+
+    context "when update fails" do
+      let(:new_attributes) {
+        { cliente_id: cliente.id, valor_realizado: 12.8}
+      }
+
+      it "fails on update the requested resultado" do
+        resultado = Resultado.create! valid_attributes
+        allow_any_instance_of(Resultado).to receive(:update).and_return(false)
+
+        put :update, params: {id: resultado.to_param, resultado: new_attributes}, session: valid_session
+        resultado.reload
+
+        expect(response).to have_http_status(422)
       end
     end
   end

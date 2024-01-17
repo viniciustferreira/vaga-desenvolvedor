@@ -17,11 +17,10 @@ class ResultadosController < ApplicationController
 
   def create
     @resultado = Resultado.new(resultado_params)
-
     if @resultado.save
       render json: { status: :created, location: @resultado }
     else
-      render json: { errors: @resultado.errors, status: :unprocessable_entity }
+      render json: { errors: @resultado.errors }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +28,7 @@ class ResultadosController < ApplicationController
     if @resultado.update(resultado_params)
       render json: { status: :ok, location: @resultado }
     else
-      render json: { errors: @resultado.errors, status: :unprocessable_entity }
+      render json: { errors: @resultado.errors }, status: :unprocessable_entity
     end
   end
 

@@ -32,6 +32,17 @@ RSpec.describe ClientesController, type: :controller do
         }.to change(Cliente, :count).by(1)
       end
     end
+
+    context "when save fails" do
+      it "fails on create a new Cliente" do
+        allow_any_instance_of(Cliente).to receive(:save).and_return(false)
+
+        expect {
+          post :create, params: {cliente: valid_attributes}, session: valid_session
+        }.to change(Cliente, :count).by(0)
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe "PUT #update" do
@@ -56,6 +67,22 @@ RSpec.describe ClientesController, type: :controller do
         expect(response.content_type).to eq('application/json')
       end
     end
+
+    context "when update fails" do
+      let(:new_attributes) {
+        { nome: "Test" }
+      }
+
+      it "fails on update the requested cliente" do
+        cliente = Cliente.create! valid_attributes
+        allow_any_instance_of(Cliente).to receive(:update).and_return(false)
+
+        put :update, params: {id: cliente.to_param, cliente: new_attributes}, session: valid_session
+        cliente.reload
+
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe "DELETE #destroy" do
@@ -66,5 +93,4 @@ RSpec.describe ClientesController, type: :controller do
       }.to change(Cliente, :count).by(-1)
     end
   end
-
 end
