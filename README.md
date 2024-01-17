@@ -84,7 +84,8 @@ Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
 
 ## Testes ao finalizar o desenvolvimento:
 
-![image](https://github.com/viniciustferreira/vaga-desenvolvedor/assets/3681036/b0f31739-9694-4fe1-8745-74c04576e29c)
+![image](https://github.com/viniciustferreira/vaga-desenvolvedor/assets/3681036/205a1ddf-e25c-41f1-8e5f-2cd21c766630)
+
 
 
 
