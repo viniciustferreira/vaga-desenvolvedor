@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'resultados'
 
 RSpec.describe Resultados, type: :lib do
-  describe "Calcula performance" do
+  describe "calcula_performance" do
     it "with valid attributes" do
       resultado = Resultados.new(10, 20)
 
@@ -34,7 +34,7 @@ RSpec.describe Resultados, type: :lib do
     end
   end
 
-  describe "Calculate valor realizado" do
+  describe "calcula_realizado" do
     it "with a valid valor realizado and a valid valor meta" do
       resultado = Resultados.new(1.0,2.0)
 
