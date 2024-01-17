@@ -81,3 +81,9 @@ Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
 * Atualizar a versão do ruby e do rails será um diferencial.
 
 # BOA SORTE!
+
+## Testes ao finalizar o desenvolvimento:
+
+![image](https://github.com/viniciustferreira/vaga-desenvolvedor/assets/3681036/37e3aad1-f84d-4a4a-b352-d2d8729930e3)
+
+
