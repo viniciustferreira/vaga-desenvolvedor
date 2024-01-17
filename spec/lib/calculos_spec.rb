@@ -53,7 +53,7 @@ RSpec.describe Calculos, type: :lib do
       expect(valor_realizado).to eq(0)
     end
 
-    it "with a invalid valor realizado and a valor meta as zero" do
+    it "with a invalid valor realizado and a valid valor meta" do
       expect { Calculos.calcula_realizado(1.0, "a") }.to raise_error("String can't be coerced into Float")
     end
   end
